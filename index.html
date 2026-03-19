@@ -230,8 +230,10 @@
       display: flex;
       justify-content: center;
       gap: 16px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-bottom: 50px;
+      overflow-x: auto;
+      padding-bottom: 4px;
     }
 
     .tab-btn {
@@ -263,7 +265,7 @@
       margin: 0 auto 40px;
       border-radius: 16px;
       overflow: hidden;
-      background: #000;
+      background: transparent;
       box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     }
 
@@ -541,13 +543,6 @@
     <div class="intro-header">
       <h2>探索古蹟之美　感受信仰之力</h2>
       <p>走進廟宇，不只是看見雕樑畫棟的藝術，更是走入一段段承載歷史與情感的信仰旅程，背後都蘊藏著人們代代相傳的願望與祈福。</p>
-    </div>
-
-    <div class="temple-img-wrapper">
-      <img
-        src="https://www.figma.com/api/mcp/asset/50482518-bf8d-4cd1-8d78-bc09de8ba596"
-        alt="萬和宮三川殿"
-      />
     </div>
 
     <!-- Tabs -->
