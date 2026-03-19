@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>台中萬和宮</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink-primary: #f04ba1;
+      --pink-light: #ff3996;
+      --pink-bg: #ffeff0;
+      --yellow: #fcf56d;
+      --dark: #260911;
+      --gray: #4a4a4a;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Serif TC', serif;
+      background: white;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      background: linear-gradient(to bottom, rgba(240,75,161,0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-brand h1 {
+      font-size: 2.2rem;
+      color: white;
+      letter-spacing: 0.15em;
+      font-weight: 900;
+    }
+
+    .nav-brand p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+
+    .nav-menus {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-btn:hover {
+      background: white;
+      color: var(--pink-primary);
+      border-color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #f04ba1 0%, #f8a8d0 60%, white 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: blur(3px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text-left {
+      grid-column: 1;
+    }
+
+    .hero-text-left p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.9;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-center-img {
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: linear-gradient(to bottom, #75cde8, white);
+      width: 300px;
+      height: 380px;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-text-right {
+      grid-column: 3;
+    }
+
+    .hero-text-right p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.9;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-bottom-title {
+      position: absolute;
+      bottom: 60px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-bottom-title h2 {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: white;
+      letter-spacing: 0.15em;
+      font-weight: 900;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+
+    /* ===== INTRO SECTION ===== */
+    #intro {
+      background: linear-gradient(to bottom, #f052a4 0%, #f8aed0 70%, white 100%);
+      padding: 100px 80px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-header {
+      max-width: 700px;
+      margin-bottom: 50px;
+    }
+
+    .intro-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: white;
+      letter-spacing: 0.12em;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .intro-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.9;
+      letter-spacing: 0.08em;
+    }
+
+    .temple-img-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .temple-img-wrapper img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      max-height: 520px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .tab-btn {
+      background: white;
+      border: 2px solid #260911;
+      color: #260911;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: #f161ac;
+      color: white;
+      border-color: #f161ac;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(241,97,172,0.4);
+    }
+
+    .tab-visual {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .tab-visual img {
+      width: 100%;
+      display: block;
+      max-height: 560px;
+      object-fit: contain;
+      transition: opacity 0.3s ease;
+    }
+
+    .tab-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.92);
+      border-radius: 16px;
+      padding: 40px 50px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    .tab-pane h3 {
+      font-size: 1.4rem;
+      color: var(--dark);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+
+    .tab-pane p {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.9;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== INTERACTIVE SECTION ===== */
+    #interactive {
+      background: white;
+      padding: 100px 80px;
+      position: relative;
+    }
+
+    .interactive-header {
+      max-width: 900px;
+      margin-bottom: 60px;
+    }
+
+    .interactive-header h2 {
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      color: var(--dark);
+      letter-spacing: 0.1em;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .interactive-header p {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.9;
+      letter-spacing: 0.08em;
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .feedback-card {
+      background: linear-gradient(135deg, #fff0f7, #ffe4f0);
+      border: 2px solid #f8c0d8;
+      border-radius: 20px;
+      padding: 28px 30px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(241,97,172,0.2);
+    }
+
+    .feedback-card p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .feedback-card::before {
+      content: '「';
+      font-size: 3rem;
+      color: #f161ac;
+      opacity: 0.3;
+      position: absolute;
+      top: 10px;
+      left: 16px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .temple-bg-section {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 40px;
+    }
+
+    .temple-bg-section img.bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+    }
+
+    .temple-bg-section .cta-box {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .cta-label {
+      background: white;
+      border-radius: 50px;
+      padding: 16px 40px;
+      display: inline-block;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .cta-label p {
+      font-size: 1.2rem;
+      color: var(--pink-light);
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #f04ba1, #ff3996);
+      color: white;
+      padding: 18px 50px;
+      border-radius: 50px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(240,75,161,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(240,75,161,0.5);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--pink-bg);
+      padding: 50px 80px;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.1);
+      scroll-margin-top: 80px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-info p {
+      font-size: 0.95rem;
+      color: var(--pink-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .footer-title {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--pink-light);
+      letter-spacing: 0.15em;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .fade-in-1 { animation-delay: 0.1s; }
+    .fade-in-2 { animation-delay: 0.3s; }
+    .fade-in-3 { animation-delay: 0.5s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-brand h1 { font-size: 1.4rem; }
+      .hero-content { grid-template-columns: 1fr; padding: 40px 24px; }
+      .hero-center-img { grid-column: 1; }
+      .hero-text-right { grid-column: 1; }
+      #intro, #interactive { padding: 60px 24px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-title { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-brand fade-in fade-in-1">
+      <h1>台中萬和宮</h1>
+      <p>台中市南屯區萬和路一段51號</p>
+    </div>
+    <div class="nav-menus fade-in fade-in-2">
+      <a href="https://678975.github.io/taichungwanhetemple/" target="_blank" class="nav-btn">導覽體驗</a>
+      <a href="#footer" class="nav-btn">聯絡資訊</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <img
+      class="hero-bg-img"
+      src="https://www.figma.com/api/mcp/asset/a123cbdf-51f2-4827-9f59-e3b03d654bd7"
+      alt=""
+    />
+    <div class="hero-content">
+      <div class="hero-text-left fade-in fade-in-2">
+        <p>坐落於台中南屯的萬和宮，不僅是地方深具意義的信仰心，更是一座擁有三百年歷史的國定三級古蹟，承載著歲月洗鍊的文化與藝術精華。</p>
+      </div>
+      <div class="hero-center-img fade-in fade-in-1">
+        <div class="hero-card">
+          <img
+            src="https://www.figma.com/api/mcp/asset/76748958-4a0e-496d-86e9-1a6974aa36f1"
+            alt="萬和宮"
+          />
+        </div>
+      </div>
+      <div class="hero-text-right fade-in fade-in-3">
+        <p>宮內主要供奉著來自湄洲的媽祖，信眾們總是親切地尊稱祂為「老大媽」。數百年來，媽祖的威靈顯赫，始終庇佑著這片土地上的居民，帶來無數的平安與福澤。</p>
+      </div>
+    </div>
+    <div class="hero-bottom-title">
+      <h2>三百年信仰傳承　凝練文化藝術之粹</h2>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="intro-header">
+      <h2>探索古蹟之美　感受信仰之力</h2>
+      <p>走進廟宇，不只是看見雕樑畫棟的藝術，更是走入一段段承載歷史與情感的信仰旅程，背後都蘊藏著人們代代相傳的願望與祈福。</p>
+    </div>
+
+    <div class="temple-img-wrapper">
+      <img
+        src="https://www.figma.com/api/mcp/asset/50482518-bf8d-4cd1-8d78-bc09de8ba596"
+        alt="萬和宮三川殿"
+      />
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('litouten', this)">犁頭店</button>
+      <button class="tab-btn" onclick="switchTab('zixingxi', this)">字姓戲</button>
+      <button class="tab-btn" onclick="switchTab('sanchuan', this)">三川殿</button>
+      <button class="tab-btn" onclick="switchTab('zhengdian', this)">正殿</button>
+      <button class="tab-btn" onclick="switchTab('houdian', this)">後殿</button>
+    </div>
+
+    <div class="tab-visual">
+      <img id="tab-img" src="images/all.png" alt="萬和宮" />
+    </div>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="litouten">
+        <h3>犁頭店</h3>
+        <p>萬和宮又稱「犁頭店聖母廟」，因舊時此區聚集打製犁頭等農具店而得名。此地曾是台中盆地開發初期的重要聚落，具有深厚的農業文化底蘊。</p>
+      </div>
+      <div class="tab-pane" id="zixingxi">
+        <h3>字姓戲</h3>
+        <p>由地方同姓宗族或數姓氏聯合為一字姓組織，輪流出錢邀請劇團演戲，現已列為台中市民俗類文化資產，是珍貴的無形文化遺產。</p>
+      </div>
+      <div class="tab-pane" id="sanchuan">
+        <h3>三川殿</h3>
+        <p>三川殿為廟宇的正門入口，其建築形制精美，雕刻工藝細膩，是傳統台灣廟宇建築藝術的代表之一，承載著工匠們的心血與智慧。</p>
+      </div>
+      <div class="tab-pane" id="zhengdian">
+        <h3>正殿</h3>
+        <p>正殿供奉主神媽祖（老大媽），為信眾朝聖的核心空間。殿內香火鼎盛，裝飾極為精緻，體現了閩南傳統宗教建築的最高工藝水準。</p>
+      </div>
+      <div class="tab-pane" id="houdian">
+        <h3>後殿</h3>
+        <p>後殿為廟宇最深處的空間，供奉多位神明，亦是廟方舉行重要儀式的場所。其建築風格與前殿相互呼應，形成完整的傳統廟宇格局。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE -->
+  <section id="interactive">
+    <div class="interactive-header">
+      <h2>沉浸信仰之美——開啟線上廟宇文化之旅</h2>
+      <p>透過360度虛擬實境技術與互動導覽介面，無論您身在何處，都能身歷其境地探索台中萬和宮珍貴的宗教建築與文化故事。在質性研究中也得到很多正向反饋。</p>
+    </div>
+
+    <div class="feedback-grid">
+      <div class="feedback-card">
+        <p>想親自走訪</p>
+      </div>
+      <div class="feedback-card">
+        <p>溫暖而有意義</p>
+      </div>
+      <div class="feedback-card">
+        <p>對傳統建築有了新的欣賞視角</p>
+      </div>
+      <div class="feedback-card">
+        <p>覺得導覽內容生動具吸引力</p>
+      </div>
+      <div class="feedback-card">
+        <p>互動過程中增強了好奇心</p>
+      </div>
+      <div class="feedback-card">
+        <p>提升我對地方宗教的親近感</p>
+      </div>
+    </div>
+
+    <div class="temple-bg-section">
+      <img
+        class="bg"
+        src="https://www.figma.com/api/mcp/asset/bb24734d-4e1b-4741-9bae-5bea1c990ec3"
+        alt=""
+      />
+      <div class="cta-box">
+        <div class="cta-label">
+          <p>虛擬導覽體驗</p>
+        </div>
+        <a href="https://678975.github.io/taichungwanhetemple/" target="_blank" class="cta-btn">
+          立即體驗虛擬導覽 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" style="scroll-margin-top: 80px;">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <p>台中市南屯區萬和路一段51號</p>
+        <p>電話　042389 3285</p>
+      </div>
+      <div class="footer-title">財團法人台中市萬和宮</div>
+    </div>
+  </footer>
+
+  <script>
+    const tabImages = {
+      litouten: 'images/犁頭店.PNG',
+      zixingxi: 'images/字姓戲.PNG',
+      sanchuan: 'images/萬和宮三川殿.PNG',
+      zhengdian: 'images/萬和宮正殿.PNG',
+      houdian: 'images/萬和宮後殿.PNG'
+    };
+
+    function switchTab(id, btn) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      const img = document.getElementById('tab-img');
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = tabImages[id];
+        img.style.opacity = '1';
+      }, 150);
+    }
+
+    // Scroll fade-in for sections
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.feedback-card, .intro-header, .interactive-header').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
