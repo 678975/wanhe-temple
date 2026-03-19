@@ -545,6 +545,10 @@
       <p>走進廟宇，不只是看見雕樑畫棟的藝術，更是走入一段段承載歷史與情感的信仰旅程，背後都蘊藏著人們代代相傳的願望與祈福。</p>
     </div>
 
+    <div class="tab-visual">
+      <img id="tab-img" src="images/all.png" alt="萬和宮" />
+    </div>
+
     <!-- Tabs -->
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('litouten', this)">犁頭店</button>
@@ -552,10 +556,6 @@
       <button class="tab-btn" onclick="switchTab('sanchuan', this)">三川殿</button>
       <button class="tab-btn" onclick="switchTab('zhengdian', this)">正殿</button>
       <button class="tab-btn" onclick="switchTab('houdian', this)">後殿</button>
-    </div>
-
-    <div class="tab-visual">
-      <img id="tab-img" src="images/all.png" alt="萬和宮" />
     </div>
 
     <div class="tab-content">
@@ -652,12 +652,7 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       btn.classList.add('active');
-      const img = document.getElementById('tab-img');
-      img.style.opacity = '0';
-      setTimeout(() => {
-        img.src = tabImages[id];
-        img.style.opacity = '1';
-      }, 150);
+    }
     }
 
     // Scroll fade-in for sections
